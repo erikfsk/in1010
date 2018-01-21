@@ -33,14 +33,14 @@ class Test{
 class Test2{
 
 	public int a = 1;
-	private String locname;
+	private String name;
 
 	Test2(String name){
 		name = name;
 	}
 
 	public String toString(){
-		return "I'm "+locname;
+		return "I'm "+name;
 	}
 }
 
