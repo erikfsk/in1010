@@ -12,6 +12,10 @@ class Week1{
 
 		Test4 test_av_toString4 = new Test4("test_av_toString");
 		System.out.println(test_av_toString4.skrivUt());
+		tester();
+	}
+	public static void tester(){
+		return;
 	}
 }
 
