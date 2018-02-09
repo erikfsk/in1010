@@ -15,9 +15,12 @@ class Over{
 	public void overrideTest(){
 		System.out.println("Now we are in an Over-object.");
 	}
+
+	
 	public void overloadingTest(){
 		System.out.println("Hello World!");
 	}
+
 	public void overloadingTest(String navn){
 		System.out.println("Hello "+navn+"! My name is Over@7852e922.");
 	}
