@@ -6,20 +6,20 @@ class Inter{
   }
 }
 
-interface drikkBar{
+interface DrikkBar{
   public void drikkGlass();
   public void fyllOpp(drikkBar type_drikke_input);
 }
 
-interface drikke{
+interface Drikke{
   public String smak();
 }
 
 
-class Glass implements drikkBar{
-  private drikke type_drikke;
+class Glass implements DrikkBar{
+  private Drikke type_drikke;
 
-  public Glass(drikke type_drikke_input){
+  public Glass(Drikke type_drikke_input){
     type_drikke = type_drikke_input;
   }
 
@@ -35,7 +35,7 @@ class Glass implements drikkBar{
   }
 }
 
-class Øl implements drikke{
+class Øl implements Drikke{
   public String smak(){
     return "ÆSJ!!!";
   }
