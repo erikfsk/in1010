@@ -36,7 +36,7 @@ class Test{
 
 
 class NodeEnkel <T>{
-	public NodeEnkel<T> neste;
+	public NodeEnkel neste;
 	public T innhold;
 	public NodeEnkel(T input){
 		innhold = input;
