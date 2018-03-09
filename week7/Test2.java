@@ -1,4 +1,27 @@
-class FIFOListe<T>{
+import java.util.*;
+
+class TestFIFO {
+  public static void main(String[] args) {
+    FIFOListe<String> liste = new FIFOListe<>();
+
+    liste.leggTil("Hei");
+    liste.leggTil("på");
+    liste.leggTil("deg");
+    liste.leggTil("!");
+
+    System.out.println("\nBruker skrivUtListe() ... ");
+    liste.skrivUtListe();
+
+    System.out.println("\nBruker iterator ... ");
+    for (String tekst : liste) {
+      System.out.print(tekst + " ");
+    }
+    System.out.println();
+  }
+}
+
+
+class FIFOListe<T> implements Iterable<T>{
 
     private Node hode;
     private Node hale;
@@ -48,6 +71,7 @@ class FIFOListe<T>{
             if (teller == indeks) {
                 return node_teller;
             }
+            node_teller = node_teller.neste;
             teller++;
         }
         return null;
@@ -75,6 +99,30 @@ class FIFOListe<T>{
     }
 
     public void skrivUtListe() {
-        // kommer neste time :)
+        Node node_teller = hode;
+        while(node_teller != null){
+            System.out.print(node_teller.ting+ " ");
+            node_teller = node_teller.neste;
+        }
+    }
+
+    public Iterator<T> iterator(){
+        return new LenkelisteIterator();
+    }
+
+    private class LenkelisteIterator implements Iterator<T>{
+
+        int posisjon = 0;
+
+        public boolean hasNext(){
+            if (hentNode(posisjon) != null){
+                return true;
+            } return false;
+        }
+        public T next(){
+            T innhold = hent(posisjon);
+            posisjon++;
+            return innhold;
+        }
     }
 }
