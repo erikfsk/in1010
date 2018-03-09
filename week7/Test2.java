@@ -75,6 +75,6 @@ class FIFOListe<T>{
     }
 
     public void skrivUtListe() {
-        // kommer neste time :) 
+        // kommer neste time :)
     }
 }
