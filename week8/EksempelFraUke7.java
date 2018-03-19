@@ -120,8 +120,7 @@ class FIFOListe<T> implements Iterable<T>{
         }
 
         public T next(){
-            T innhold = hent(pos++);
-            return innhold;
+            return hent(pos++);
         }
 
     }
