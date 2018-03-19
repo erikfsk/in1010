@@ -102,9 +102,10 @@ class FIFOListe<T> implements Iterable<T>{
     public void skrivUtListe() {
         Node node_teller = hode;
         while (node_teller != null) {
-            System.out.println(node_teller.ting);
+            System.out.print(node_teller.ting+" ");
             node_teller = node_teller.neste;
         }
+        System.out.print("\n");
     }
 
     public Iterator<T> iterator(){
@@ -113,16 +114,13 @@ class FIFOListe<T> implements Iterable<T>{
 
     private class LenkelisteIterator implements Iterator<T>{
         int pos = 0;
+        
         public boolean hasNext(){
-            if (pos < storrelse_){
-                return true;
-            }
-            return false;
+            return pos < storrelse_;
         }
 
         public T next(){
-            T innhold = hent(pos);
-            pos++;
+            T innhold = hent(pos++);
             return innhold;
         }
 
