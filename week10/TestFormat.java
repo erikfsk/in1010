@@ -6,33 +6,20 @@ public class TestFormat {
 
     public static void main(String[] args) {
         numbersText();
-        // gameTime();
+        gameTime();
     }
 
     public static void numbersText(){
-        System.out.format("%10s %10s %10s %10s","i", "1/i", "i^0.5","i^i");
+        System.out.format("%-10s %-10s %-10s %-10s%n","i", "1/i", "i^0.5","i^i");
         for (int i = 1; i<11 ;i++){
             double[] numbersList = numbers(i);
             for(double tall : numbersList){
                 System.out.format("%-10.2f",tall);
             }
+            // System.out.format("%-10.2f%-10.5f%-10.5f%-10.2f",
+            // numbersList[0],numbersList[1],numbersList[2],numbersList[3]);
             System.out.format("%n");
         }
-
-        /*
-        i      1/i       i^0.5     i^i
-        1.0    1.00000   1.00000   1.0
-        2.0    0.50000   1.41421   4.0
-        3.0    0.33333   1.73205   9.0
-        4.0    0.25000   2.00000   16.0
-        5.0    0.20000   2.23607   25.0
-        6.0    0.16667   2.44949   36.0
-        7.0    0.14286   2.64575   49.0
-        8.0    0.12500   2.82843   64.0
-        9.0    0.11111   3.00000   81.0
-        10.0   0.10000   3.16228   100.0
-        */
-        System.out.format("%d %-10.2f %s");
     }
 
     public static double[] numbers(int i){
@@ -69,6 +56,34 @@ public class TestFormat {
         String[] numbers = {"0","1","2","3","4","5","6","7","8","9"};
         int attempts = 10;
         int guess;
+        Scanner in = new Scanner(System.in);
+        while(true){
+            for (String number : numbers) {
+                System.out.format("%2s",number);
+            }
+            System.out.format("%n");
 
+            while(true){
+                try{
+                    String linje = in.nextLine();
+                    guess = Integer.parseInt(linje);
+                    if (guess > -1 && guess < 10){
+                        break;
+                    }
+                    throw new Exception();
+                } catch (Exception e){
+
+                }
+            }
+
+            if (guess == randomNum) {
+                System.out.format("That is correct! %d was the digit!",randomNum);
+                break;
+            } else if (guess < randomNum){
+                numbers[guess] = ">";
+            } else if (guess > randomNum){
+                numbers[guess] = "<";
+            }
+        }
     }
 }
