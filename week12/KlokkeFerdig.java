@@ -8,12 +8,12 @@ import  javafx.scene.text.Text;
 import java.time.LocalTime;
 
 
-public class Klokke extends Application {
+public class KlokkeFerdig extends Application {
     Text hilsen = new Text(naa());
-    boolean slutt = false;
+    public static boolean slutt = false;
+
     class Sekundteller extends Thread{
         public void run(){
-            boolean slutt = false;
             while (!slutt){
                 try{
                     sleep(1000);
@@ -27,28 +27,30 @@ public class Klokke extends Application {
             }
         }
     }
-    @Override
     //3. FYLL INN METODENAVN OG EVT PARAMETRE
-    public void start(Stage stage){
+    @Override
+    public void start(Stage teater){
 
         //4. Sett Y-aksen til teksten til å være 100.
         hilsen.setY(100);
+
         //5. SETT FONT, opprett font med parameter 100
         hilsen.setFont(new Font(100));
 
-
         Pane kulisser = new Pane();
-
-
         //6. LEGG TIL "hilsen i kulisser"
         kulisser.getChildren().add(hilsen);
+
         //7. Opprett en scene med kulisser
         Scene scene = new Scene(kulisser);
+
         //8. SETT tittle på "teateret":
-        stage.setTitle("KLOKKE");
+        teater.setTitle("Klokken er");
+
         //9. Sett scenen og vis den!
-        stage.setScene(scene);
-        stage.show();
+        teater.setScene(scene);
+        teater.show();
+
         //10. Opprett og start en "Sekundteller"-tråd
         new Sekundteller().start();
     }
@@ -63,5 +65,6 @@ public class Klokke extends Application {
     public static void main(String[] args) {
         //11. Start applikasjonen
         Application.launch(args);
+        slutt = true;
     }
 }
