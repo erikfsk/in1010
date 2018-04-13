@@ -6,7 +6,7 @@ import java.util.concurrent.locks.Condition;
  * Class for a monitor object, maintaining a soda machine.
  * The number of sodas will always be 0 <= sodas <= capacity.
  */
-public class SodaMachine {
+class SodaMachine {
     private final Lock sodaLock = new ReentrantLock();
     private final Condition hasSodasToBy = sodaLock.newCondition();
     private final Condition needsRefill = sodaLock.newCondition();
@@ -26,13 +26,13 @@ public class SodaMachine {
         sodaLock.lock();
         try {
             while (sodaCount == 0)
-            hasSodasToBy.await();
+                hasSodasToBy.await();
 
             // take a soda
             System.out.println("Buying a soda, remaining count is " + --sodaCount);
 
             if (sodaCount == 0)
-            needsRefill.signal();
+                needsRefill.signal();
         } catch (InterruptedException e) {
             System.out.println("Got interrupted while trying to buy soda.");
         } finally {
@@ -48,7 +48,7 @@ public class SodaMachine {
         sodaLock.lock();
         try {
             while (sodaCount > 0)
-            needsRefill.await();
+                needsRefill.await();
 
             // Refill
             sodaCount = capacity;
